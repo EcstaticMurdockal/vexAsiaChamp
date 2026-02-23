@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/caoyuxuan/Documents/Tony‘s All/VEX Projects/VEX code/24华南赛/真·新车测试程序",
+      "program": "/Users/caoyuxuan/Documents/Tony‘s All/VEX Projects/VEX code/24华南赛/真·新车测试程序/build/Debug/outDebug"
+    }
+  ]
+}
