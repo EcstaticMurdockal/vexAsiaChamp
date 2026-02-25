@@ -129,7 +129,7 @@ void updates(){
     Controller1.Screen.print("right: %f  mm", R_dis);
     Controller1.Screen.setCursor(3,1);
     Controller1.Screen.print("front: %f   back: %f", front_dis, back_dis);
-    printf("H: %f  front: %f  back: %f \n", H, front_dis, back_dis);
+    //printf("H: %f  front: %f  back: %f \n", H, front_dis, back_dis);
 
     task::sleep(dt);
   }
@@ -428,34 +428,34 @@ int ballway_progress(){
       for(int i = 0;i<4;i++) Intake(i+1,powers[i]);
     }
     else if(ballway_mode == 5){
-      intake1.spin(fwd,-160,rpm);
-      intake2.spin(fwd,-140,rpm);
-      intake3.spin(fwd,-150,rpm);
-      intake4.spin(fwd,-200,rpm);
+      intake1.spin(fwd,-100,rpm);
+      intake2.spin(fwd,-80,rpm);
+      intake3.spin(fwd,-60,rpm);
+      intake4.spin(fwd,-130,rpm);
     }
     else if(ballway_mode == 6){
-      intake1.spin(fwd,145,rpm);
-      intake2.spin(fwd,39,rpm);
-      intake3.spin(fwd,90,rpm);
-      intake4.spin(fwd,-43,rpm);
+      intake1.spin(fwd,125,rpm);
+      intake2.spin(fwd,34,rpm);
+      intake3.spin(fwd,70,rpm);
+      intake4.spin(fwd,-38,rpm);
     }
     else if(ballway_mode == 7){
       intake1.spin(fwd,135,rpm);
-      intake2.spin(fwd,125,rpm);
-      intake3.spin(fwd,150,rpm);
-      intake4.spin(fwd,-120,rpm);
+      intake2.spin(fwd,115,rpm);
+      intake3.spin(fwd,130,rpm);
+      intake4.spin(fwd,-110,rpm);
     }
     else if(ballway_mode == 8){
       intake1.spin(fwd,140,rpm);
-      intake2.spin(fwd,100,rpm);
-      intake3.spin(fwd,150,rpm);
+      intake2.spin(fwd,90,rpm);
+      intake3.spin(fwd,110,rpm);
       intake4.spin(fwd,-70,rpm);
     }
     else if(ballway_mode == 9){
-      intake1.spin(fwd,-55,rpm);
-      intake2.spin(fwd,-40,rpm);
+      intake1.spin(fwd,-90,rpm);
+      intake2.spin(fwd,-70,rpm);
       intake3.spin(fwd,-50,rpm);
-      intake4.spin(fwd,-80,rpm);
+      intake4.spin(fwd,-40,rpm);
     }
     else if(ballway_mode == 10){
       intake1.spin(fwd,200,rpm);
@@ -465,9 +465,9 @@ int ballway_progress(){
     }
     else if(ballway_mode == 11){
       intake1.spin(fwd,120,rpm);
-      intake2.spin(fwd,80,rpm);
-      intake3.spin(fwd,120,rpm);
-      intake4.spin(fwd,-75,rpm);
+      intake2.spin(fwd,70,rpm);
+      intake3.spin(fwd,100,rpm);
+      intake4.spin(fwd,-70,rpm);
     }
     else if(ballway_mode == 12){
       intake1.spin(fwd,-200,rpm);
@@ -476,16 +476,16 @@ int ballway_progress(){
       intake4.spin(fwd,0,rpm);
     }
     else if(ballway_mode == 15){
-      intake1.spin(fwd,-160,rpm);
-      intake2.spin(fwd,-140,rpm);
+      intake1.spin(fwd,-100,rpm);
+      intake2.spin(fwd,-80,rpm);
       intake3.spin(fwd,0,rpm);
       intake4.spin(fwd,0,rpm);
     }
     else if(ballway_mode == 17){
       intake1.spin(fwd,0,rpm);
-      intake2.spin(fwd,125,rpm);
-      intake3.spin(fwd,140,rpm);
-      intake4.spin(fwd,-100,rpm);
+      intake2.spin(fwd,115,rpm);
+      intake3.spin(fwd,120,rpm);
+      intake4.spin(fwd,-105,rpm);
     }
     else if(ballway_mode == 21){
       intake1.spin(fwd,0,rpm);
@@ -642,294 +642,267 @@ void autonomous(void)
 
   ballway_mode = 1;
   */
-  /* 7 balls on mid goal
-  ballway_mode = 4;
-  task::sleep(200);
-  while(Ballway_Distance_Up.objectDistance(mm) < 60){
-    ballway_mode = 5;
-    task::sleep(10);
-  }
-  ballway_mode = 7;
-  task::sleep(120);
-  ballway_mode = 8;
-  task::sleep(300);
-  ballway_mode = 6;
-  task::sleep(3000);
-  //ballway_mode = 9;
-  Move(7,7);
-  task::sleep(1200);
-  Move_Stop_brake();
-  ballway_mode = 0;
-  */
-  /* 7 balls in low gaol
-  Move(30,30);
-  task::sleep(300);
-  Move_Stop_hold();
-  GMove(40,-165);
-  Move_Stop_hold();
-  //double_park.set(1);
-  ballway_mode = 2;
-  task::sleep(130);
-  ballway_mode = 5;
-  task::sleep(200);
-  ballway_mode = 9;
-  task::sleep(3200);
-  GyroMove(20,-50,0);
-  Move_Stop_hold();
-  GyroMove(20,120,0);
-  Move_Stop_hold();
-  ballway_mode = 0;
-  GyroMove(50,-450,0);
-  Move_Stop_brake();
-  */
-
 
   ballway_mode = 4;
   Move(15,15);
   task::sleep(300);
   Move_Stop_coast();
-  for(int i = 0; i < 3; i++){
+  for(int i = 0; i < 2; i++){
     Move(-25,-25);
     task::sleep(400);
     Move(37,37);
     task::sleep(600);
   }
-  task::sleep(100);
+  Move(-25,-25);
+  task::sleep(400);
+  Move(39,39);
+  task::sleep(650);
 
   GyroMove(50,-250,0);
   GyroMove(60,-200,0);
   GyroMove(50,-300,0);
   GyroMove(40,-200,0);
   Move_Stop_hold();
-  pid_until_dis(1090,1,0,950);
+  pid_until_dis(1080,1,0,950);
   Move_Stop_hold();
   //ballway_mode = 0;
 
-   Turn(102,700);
+   Turn(102,600);
    //ballway_mode = 4;
-   PIDGMove(900,109.5,2000);
+   PIDGMove(920,108,2000);
    Move_Stop_hold();
-   Turn(47,900);
-   GyroMove(30,-100,50);
+   Turn(47,700);
+   GyroMove(50,-100,50);
 
-   Move_to_yellow(-150,50);
+   Move_to_yellow(-100,65);
    Move(-30,-30);
-   task::sleep(130);
+   task::sleep(120);
    Move_Stop_brake();
    Move(-3,-3);
 
-  Load.set(1);
+  Load.set(1); // 7 balls in the mid goal
   int t = 0;
-  while(Ballway_Distance_Up.objectDistance(mm) < 60 && t <= 800){
+  while(Ballway_Distance_Up.objectDistance(mm) < 60 && t <= 700){
     ballway_mode = 5;
     task::sleep(10);
     t += 10;
   }
 
   ballway_mode = 17;
-  task::sleep(250);
+  task::sleep(160);
   ballway_mode = 7;
   task::sleep(30);
   ballway_mode = 8;
-  task::sleep(300);
+  task::sleep(260);
   Move(-1,-1);
   ballway_mode = 11;
   task::sleep(850);
   ballway_mode = 6;
-  task::sleep(1750);
   Move_Stop_brake();
-  task::sleep(100);
+  task::sleep(1400);
+  Move(1,1);
+  task::sleep(600);
+  Move_Stop_hold();
 
   ballway_mode = 4;
-  GyroMove(70,300,42);
+  GyroMove(80,280,42);
 
-  PIDGMove(1860,50,1500);
+  PIDGMove(1800,55,2000);
   Load.set(1);
-  
-  Move_Stop_hold();
+  Move_Stop_hold(); 
   Turn(0,400);
-  Move_to_blue(150,50);
+
+  Move_to_blue(200,30); // Clear first loader
+  Move_to_blue(200,60);
   Move(30,30);
-  task::sleep(700);
-  Move(15,15);
-  task::sleep(1000);
-  Move(10,10);
-  task::sleep(900);
+  task::sleep(400);
+  Move(20,20);
+  task::sleep(1200);
+  Move(25,25);
+  task::sleep(400);
   Move_Stop_brake();
+
   GyroMove(60,-100,-45);
-  GyroMove(80,-200,-65);
+  GyroMove(70,-250,-65);
   while(back_dis > 650){
-    Move(-55,-55);
+    Move(-65,-65);
     task::sleep(10);
   }
   Move_Stop_brake();
   GyroMove(80,-700,-2);
-  GyroMove(100,-2450,0);
+  GyroMove(100,-2650,0);
   Load.set(0);
-  GyroMove(82,-320,72);
-  GyroMove(54,-500,90);
-  GyroMove(30,-380,90);
+  //GyroMove(72,-280,72);
+  GyroMove(52,-700,90);
+  GyroMove(30,-330,90);
   Move_Stop_brake();
 
-  Turn(170,450);
+  Turn(167,450);
   Move_to_yellow(-300,60);
   Move_to_yellow(-100,30);
-  Move(-50,-50);
-  task::sleep(250);
-  Move_Stop_coast();
-  Load.set(1);
+  Move(-60,-60);
+  task::sleep(100);
   ballway_mode = 21;
   task::sleep(100);
+  Move_Stop_coast();
+  Load.set(1);
+  task::sleep(50);
+  Move(-5,-5);
   ballway_mode = 1;
-  task::sleep(1600);
+  task::sleep(1300);
   ballway_mode = 4;
 
-  GyroMove(100,50,180);
+  GyroMove(100,50,180); // Clear second loader
   Move_to_red(400,40);
   Move(45,45);
+  task::sleep(350);
+  Move(30,30);
+  task::sleep(500);
+  Move(15,15);
   task::sleep(200);
   Move(30,30);
-  task::sleep(300);
+  task::sleep(200);
   Move(15,15);
-  task::sleep(2500);
+  task::sleep(1200);
   Move_Stop_brake();
   Move_to_yellow(-550,80);
   Move_to_yellow(-390,30);
   Move(-20,-20);
-  task::sleep(400);
+  task::sleep(300);
   Move_Stop_brake();
   ballway_mode = 21;
   task::sleep(50);
   ballway_mode = 1;
-  task::sleep(1700);
+  task::sleep(1300);
   // Finiashed fist long goal
-  
-
 
 
   Load.set(0);
   GyroMove(40,300,240);
   GyroMove(100,500,270);
   GyroMove(30,50,270);
-  ballway_mode = 4;
   Move_Stop_brake();
 
-  pid_until_dis(1500,0,270,2000);
+  pid_until_dis(1525,0,270,2000);
   Move_Stop_hold();
 
-  Turn(180,700);
-  
-  GyroMove(70,210,180);
-  Move(60,60);
-  task::sleep(250);
-  Move(18,18);
-  task::sleep(400);
+  Turn(180,650);
+
+  //printf("New test: \n\n");
+  ballway_mode = 4; // Clear second parking zone
+  GyroMove(55,150,180);
+  GyroMove(85,100,180);
+  GyroMove(40,150,180);
+  Move(30,30);
+  task::sleep(130);
+  Move(16,16);
+  task::sleep(130);
   Move_Stop_brake();
   for(int i = 0; i < 3; i++){
-    Move(-23,-23);
+    Move(-26,-26);
     task::sleep(400);
-    Move(32,32);
-    task::sleep(700);
+    Move(36,36);
+    task::sleep(640);
   }
-  GyroMove(60,-800,180);
-  GyroMove(30,-50,180);
-  Move_Stop_brake();
-  pid_until_dis(1040,1,180,900);
+  GyroMove(45,-200,180);
+  GyroMove(70,-350,180);
+  GyroMove(40,-150,180);
+  GyroMove(30,-100,180);
+  ballway_mode = 0;
+  //Move_Stop_hold();
+  pid_until_dis(1080,1,180,950);
+  ballway_mode = 4;
   Move_Stop_hold();
 
-  Turn(63,700);
-  //PIDGMove(750,65,1500);
-  GyroMove(80,600,63);
-  GyroMove(30,120,63);
-  GyroMove(15,30,63);
+  Turn(74,600);
+  PIDGMove(933,70,2000);
   Move_Stop_hold();
-  GyroMove(30,-35,63);
-  Move_Stop_hold();
-  Turn(-45,600);
+  task::sleep(50);
+  Turn(-45,650);
 
-  //7 balls in the low goal
-  GyroMove(70,200,-45);
-  Move_to_yellow_front(150,45);
-  // GyroMove(40,300,-45);
-  
-  Move(30,30);
-  task::sleep(800);
+  // 7 balls in the low goal ///////////////
+
+  GyroMove(40,165,-45);
   Move_Stop_hold();
-  GMove(33,-153);
-  //GyroMove(33,-145,0);
-  //pid_until_dis(1410,0,0,1000);
-  Move_Stop_hold();
-  ballway_mode = 9;
-  task::sleep(350);
-  ballway_mode = 12;
-  task::sleep(180);
+
   ballway_mode = 2;
-  task::sleep(30);
+  task::sleep(50);
   ballway_mode = 15;
-  task::sleep(150);
-  ballway_mode = 5;
-  task::sleep(200);
-  ballway_mode = 9;
-  task::sleep(3100);
-  Move(-5,-5);
   task::sleep(400);
+  ballway_mode = 5;
+  task::sleep(950);
+  ballway_mode = 9;
+  // ballway_mode = 2;
+  // task::sleep(300);
+  // ballway_mode = 15;
+  // task::sleep(800);
+  // ballway_mode = 5;
+  // task::sleep(1000);
+  // ballway_mode = 9;
+  task::sleep(1000);
+  Move(18,18);
+  task::sleep(200);
+  Move_Stop_hold();
+
+  GyroMove(50,-490,-45);
+  ballway_mode = 1;
   GyroMove(20,-50,-45);
   Move_Stop_hold();
-  GyroMove(19,35,-45);
-  Move_Stop_hold();
-  task::sleep(100);
-  ballway_mode = 0;
-  GyroMove(50,-450,-45);
+
+  Turn(-103,500);
+
+  //ballway_mode = 4;
+  PIDGMove(3500,-97,3000);
+  Turn(-180,450);
+
+  // Clear third loader //////// 
+  Load.set(1);
+  ballway_mode =4;
+  Move_to_blue(180,65);
+  Move(45,45);
+  task::sleep(400);
+  Move(20,20);
+  task::sleep(1700);
+  GyroMove(65,-320,-240);
+
+  Move_Stop_brake();
+  GyroMove(60,-300,-179);
+  GyroMove(100,-3200,-179);
+  Load.set(0);
+  GyroMove(60,-400,-110);
+  GyroMove(30,-300,-90);
+  GyroMove(35,-200,-90);
   Move_Stop_brake();
 
-  Turn(-100,900);
-
-  ballway_mode = 4;
-  PIDGMove(-350,-100,1000);
-  Turn(-105,900);
-
-  GyroMove(100,3200,-90);
-  GyroMove(20,300,-95);
-  pid_until_dis(450,1,-105,800);
-  Move_Stop_brake();
-
-  Turn(-180,900);
-  Move_to_blue(200,50);
-  Move(30,30);
-  task::sleep(500);
-  GyroMove(60,-250,-225);
-  while(back_dis > 600){
-    Move(-55,-55);
-    task::sleep(10);
-  }
-  Move_Stop_brake();
-  GyroMove(70,-600,-179);
-  GyroMove(100,-2200,-179);
-  GyroMove(70,-400,-110);
-  GyroMove(40,-500,-90);
-  GyroMove(20,-150,-90);
-  Move_Stop_brake();
-
-  Turn(0,900);
+  Turn(-10,350);
   Move_to_yellow(-300,60);
   Move(-40,-40);
-  task::sleep(500);
-  Move_Stop_brake();
-  task::sleep(1000);
+  task::sleep(250);
+  Move_Stop_coast();
+  ballway_mode = 21;
+  task::sleep(250);
+  ballway_mode = 1;
+  task::sleep(1300);
 
-  Move_to_red(1500,60);
+  ballway_mode = 4; // Clear fourth loader
+  Load.set(1);
+  Move_to_red(300,60);
+  Move_to_red(350,30);
+  Move(45,45);
+  task::sleep(300);
   Move(20,20);
-  task::sleep(200);
+  task::sleep(1700);
   Move_to_yellow(-600,70);
   Move_to_yellow(-170,30);
   Move(-30,-30);
-  task::sleep(500);
-  Move_Stop_brake();
+  task::sleep(200);
+  Move_Stop_coast();
   ballway_mode = 1;
-  task::sleep(500);
+  task::sleep(1250);
+  Load.set(0);
   
-  GyroMove(70,1200,38);
-  GyroMove(60,2200,90);
+  GyroMove(100,2000,70);
+  GyroMove(100,700,90);
   Move_Stop_brake();
 
 

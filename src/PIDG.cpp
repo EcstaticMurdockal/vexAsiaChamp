@@ -405,11 +405,8 @@ void GyroMove( double power, double enc , double o){
     turnpower = 0.85 * (o - H);
 
 
-    if (fabs(enc)-fabs(menc) < 10 )
+    if (fabs(enc)-fabs(menc) < 10 || time > 6000)
     {
-      break;
-    }
-    if(time > 2000){
       break;
     }
 
@@ -424,6 +421,7 @@ void GyroMove( double power, double enc , double o){
     task::sleep(20);
   }
   forward_(0,0);
+  printf("menc: %f\n",menc);
   is_executing_movements = 0;
 }
 
@@ -827,7 +825,7 @@ void pid_until_dis(float target_dis, bool isfront, double o, int timeout){
   else{
     back_dis = dis_back.objectDistance(mm);
   }
-    time += 20;
+    time += 10;
     if(isfront){
       error = -(target_dis - front_dis);
     }
@@ -862,7 +860,7 @@ void pid_until_dis(float target_dis, bool isfront, double o, int timeout){
     else{
       forward_(pow+turnpower,pow-turnpower);
     }
-    task::sleep(20);
+    task::sleep(10);
   }
   forward_(0,0);//Reset motor voltage
   is_executing_movements = 0;
